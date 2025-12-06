@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>about-me</title>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-me.html">About Me</a>
+      <a href="Projects.html">Projects</a>
+        <a href="relax.html">relax</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+      <style>h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+}
+h3 {text-align: center;color: white;}
+image-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+image-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+ img {
+  width: 300px;
+  height: 300px;
+  border-radius: 0px;
+  object-fit: cover;
+}
+
+img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+ body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: gold;
+  margin: 0px;
+  background: #0a0e27 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="20" r="1" fill="white"/><circle cx="40" cy="60" r="1" fill="white"/></svg>');
+  min-height: 100vh;text-align: center;}
+
+h3 {
+  transition: all 0.3s;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  width: auto;
+}
+
+h3:hover {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+a {
+  color: blue;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+a:hover {
+  background-color: #FFD700;
+  color: silver;
+  border-radius: 10px;
+  padding: 8px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+ image-container img {
+  border: 5px solid #2c3e50;
+  border-radius: 10px;
+  margin: 10px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+  br {
+  line-height: 0.2;
+}
+      clicker-game {
+  text-align: center;
+  padding: 20px;
+  background-color: #F7D9C4;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 300px;
+}
+</style>
+      <script>#clickBtn {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #A7C7E7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+</script>
+<h1>About Me</h1>
+    <h3>I am a thirteen year old girl learning STEM at Ntare louisenlund school. I am passionate of coding, linguistic acquiry ,anatomy ,ocean, galaxy, drawing and chess.</h3><br>
+<h2>My favorite things</h2><br>
+      <a href="favorite.html">click me to be taken to my favorite</a>
+    <h2><u>Important Events</u></h2><br>
+    <h3>Started learning STEM when accepted at Ntare louisenlund</h3><br>
+    <h3>Began my first portfolio website project</h3><br>
+    <h3>entered the Ntare louisenlund </h3><br>
+<img src="https://i.postimg.cc/2SMtwRJd/Screenshot-2025-11-23-12-08-13-PM.png"><br>
+    <h1>My Achievements</h1>
+    <h2><u>What I've Accomplished</h2></u><br>
+    <h3>Learned how to write HTML:this was really hard to do because the variety of tags that I had to master was numerous🥳🤩</h3><br>
+<img src="https://i.postimg.cc/QCQmjt3M/Screenshot-2025-11-22-10-57-50-AM.png"><br>
+    <h3>Learned how to speak French:I started learning french at a young age and this nis one of the achivements that I mostly like</h3><br>
+<img src="https://i.postimg.cc/ydFcZbrM/Screenshot-2025-11-22-10-58-58-AM.png"><br>
+    <h3>Learned more about IT and computing:thanks to my design teacher I now know more about IT.</h3><br>
+    <img src="https://i.postimg.cc/nzYhv13d/Screenshot-2025-11-23-11-51-23-AM.png"><br>
+    <section id="quiz-game">
+  <h2>Test Your Knowledge About Me and my passions! 🎮</h2>
+  <h3>a correct answer=200 points a wrong answer= -100 points</h3>
+
+  <div class="quiz-container">
+    <div id="question-display">
+      <p style="font-size: 20px; color: #6C7A89; font-weight: bold;">Score: <span id="quiz-score">0</span></p>
+      <h3 id="question-text"></h3>
+      <div id="options-container"></div>
+    </div>
+  </div>
+
+  <style>
+    .quiz-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #F7D9C4;
+      border-radius: 10px;
+    }
+
+    #question-text {
+      color: #6C7A89;
+      margin-bottom: 20px;
+    }
+
+    #options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #A7C7E7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .option-btn:hover {
+      background-color: #8FA8C8;
+      transform: scale(1.05);
+    }
+
+    .option-btn.correct {
+      background-color: #90EE90;
+    }
+
+    .option-btn.incorrect {
+      background-color: #FF6B6B;
+    }
+  </style>
+
+  <script>
+    const questions = [
+      {
+        question: "How old are you?",
+        options: ["23", "13", "45", "12"],
+        correct: 1
+      },
+      {
+        question: "What are my passions?",
+        options: ["Food", "Anime", "Reading", "Ocean", "Pingpong"],
+        correct: [2, 3]
+      },
+      {
+        question: "what is my favorite food?",
+        options: ["tomato salad","french fries", "apple fruit", "orange"],
+        correct: 1
+      },
+      {
+        question: "What is the power house of a cell?",
+        options: ["mitochondria", "nucleus", "vacuole", "plasmodesmata"],
+        correct: 0
+      },
+      {
+        question: "which one is a sea creature?",
+        options: ["dragon", "hippopotamus", "unicorn", "octopus"],
+        correct: 3
+      },
+      {
+        question: "What is the word that means appearing casually calm, relaxed, and unconcerned?",
+        options: ["infront of your teacher", "sad", "depressed", "nonchalant"],
+        correct: 3
+      },
+      {
+        question: "where do I study at?",
+        options: ["Ntare louisenlund university", "GS gisasa", "University of hungary", "Ntare louisenlund"],
+        correct: 3
+      },
+      {
+        question: "What is the translation of wife in german",
+        options: ["frau", "und", "mit", "mutter"],
+        correct: 0
+      },
+      {
+        question: "What is the tag that acts as the enter button",
+        options: ["<enter>", "<div>", "<br>", "none is correct"],
+        correct: 2
+      },
+      {
+        question: "Which chess piece only moves one square forward and moves diagonally to eat other chess piece",
+        options: ["tower", "king", "spawn", "queen"],
+        correct: 2
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function displayQuestion() {
+      const question = questions[currentQuestion];
+      document.getElementById('question-text').textContent = question.question;
+
+      const optionsContainer = document.getElementById('options-container');
+      optionsContainer.innerHTML = '';
+
+      question.options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.className = 'option-btn';
+        btn.onclick = () => checkAnswer(index);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const question = questions[currentQuestion];
+      const isCorrect = Array.isArray(question.correct) 
+        ? question.correct.includes(selectedIndex)
+        : question.correct === selectedIndex;
+
+      if (isCorrect) {
+        score += 200;
+        document.getElementById('quiz-score').textContent = score;
+        alert('Correct! +200 points ✅');
+      } else {
+        score -= 100;
+        document.getElementById('quiz-score').textContent = score;
+        const correctAnswer = Array.isArray(question.correct) 
+          ? question.options[question.correct[0]]
+          : question.options[question.correct];
+        alert('Incorrect! -100 points ❌\n\nCorrect answer: ' + correctAnswer);
+      }
+
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        displayQuestion();
+      } else {
+        alert('Quiz Complete! Final Score: ' + score + '/' + (questions.length * 200));
+        currentQuestion = 0;
+        score = 0;
+        displayQuestion();
+      }
+    }
+
+    displayQuestion();
+  </script>
+</section>
+  </body>
+</html>
+<footer>
+      <p>&copy; 2025 Brionna's Portfolio. All rights reserved.</p>
+    </footer>

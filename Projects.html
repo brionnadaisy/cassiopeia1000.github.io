@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projects</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+      }
+
+      h4 {
+        text-align: center;
+      }
+
+      h3 {
+        text-align: center;
+        color: white;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: gold;
+        margin: 0px;
+        background: #0a0e27 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="10" cy="20" r="1" fill="white"/><circle cx="40" cy="60" r="1" fill="white"/></svg>');
+        min-height: 100vh;
+        text-align: center;
+      }
+
+      nav {
+        color: blue;
+        background-color: #0a0e27;
+        align-items: center;
+      }
+
+      nav:hover {
+        color: red;
+      }
+
+      a {
+        color: blue;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+
+      a:hover {
+        background-color: #FFD700;
+        color: silver;
+        border-radius: 10px;
+        padding: 8px 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .projects-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px;
+      }
+
+      .project-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 350px;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+      }
+
+      .project-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+      }
+
+   .project-card img {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+      .project-card h3 {
+        color: white;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+
+      .progress-bar {
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid #FFD700;
+        border-radius: 10px;
+        height: 20px;
+        margin: 15px 0;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        background: linear-gradient(90deg, #FF0000, #0000FF, #FFFF00);
+        height: 100%;
+        border-radius: 10px;
+        transition: width 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .details-btn {
+        background-color: #FFD700;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+        width: 100%;
+      }
+
+      .details-btn:hover {
+        background-color: #FFC700;
+        transform: scale(1.05);
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        animation: fadeIn 0.3s;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .modal-content {
+        background-color: #0a0e27;
+        margin: 5% auto;
+        padding: 30px;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 700px;
+        max-height: 80vh;
+        overflow-y: auto;
+        color: gold;
+      }
+
+      .close-btn {
+        color: #FFD700;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .close-btn:hover {
+        color: #FFC700;
+      }
+
+      .modal h2 {
+        color: #FFD700;
+        margin-bottom: 20px;
+      }
+
+      .gallery {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+        overflow-x: auto;
+        padding: 10px 0;
+      }
+
+      .gallery img {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 2px solid #FFD700;
+        transition: all 0.3s;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(255, 215, 0, 0.5);
+      }
+
+      .main-gallery-image {
+        width: 100%;
+        max-height: 400px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        object-fit: cover;
+      }
+
+      .fireworks-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        pointer-events: none;
+      }
+
+      @keyframes explode {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--tx), var(--ty)) scale(0);
+        }
+      }
+img {
+      .particle {
+        animation: explode 1s ease-out forwards;
+      }
+
+      footer {
+        margin-top: 40px;
+        padding: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-me.html">About Me</a>
+      <a href="Projects.html">Projects</a>
+      <a href="relax.html">relax</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <h1>Projects</h1>
+    <h2>My projects</h2>
+
+    <div class="projects-container">
+      <!-- Project 1 -->
+      <div class="project-card" onclick="createFireworks(event); openModal(0)">
+        <img src="https://i.postimg.cc/90c2mD7B/IMG-20251122-111556.jpg" alt="Portfolio Project">
+        <h3>Portfolio Website</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 85%">85%</div>
+        </div>
+        <p>Click to see details</p>
+        <button class="details-btn">View Details</button>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card" onclick="createFireworks(event); openModal(1)">
+        <img src="https://i.postimg.cc/9QdvMmcs/IMG-20251122-112629.jpg" alt="German Learning">
+        <h3>Learn German</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 25%">25%</div>
+        </div>
+        <p>Click to see details</p>
+        <button class="details-btn">View Details</button>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card" onclick="createFireworks(event); openModal(2)">
+        <img src="https://i.postimg.cc/Jh1ZwqTF/Screenshot-2025-11-22-11-41-45-AM.png" alt="Chess">
+        <h3>Learn Chess</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 90%">90%</div>
+        </div>
+        <p>Click to see details</p>
+        <button class="details-btn">View Details</button>
+      </div>
+    </div>
+
+    <!-- Modals for each project -->
+    <div id="modal0" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal(0)">&times;</span>
+        <h2>Portfolio Website</h2>
+        <img src="https://i.postimg.cc/90c2mD7B/IMG-20251122-111556.jpg" class="main-gallery-image" alt="Portfolio">
+        <h3>Project Details</h3>
+        <p>I want to create my own portfolio website. It will take me three months and I am doing my best to do it.</p>
+        <p>I am learning about how to make HTML CSS and javascript, those are skill that were not easy to master but still very useful. I am also training for coding with more detailing by adding firework effect and many other interactive elements. I arrived pretty far and that is why you are able to see this description.</p>
+        <h3>Technologies Used:</h3>
+        <p>HTML, CSS, JavaScript, Formspree</p>
+        <h3>Timeline:</h3>
+        <p>3 months | Progress: 85%</p>
+        <h3>Gallery</h3>
+        <div class="gallery">
+          <img src="https://i.postimg.cc/90c2mD7B/IMG-20251122-111556.jpg" alt="Gallery 1">
+          <img src="https://i.postimg.cc/zB83PxMc/Screenshot-2025-12-06-9-11-28-AM.png" alt="Gallery 2">
+        </div>
+      </div>
+    </div>
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal(1)">&times;</span>
+        <h2>Learn German</h2>
+        <img src="https://i.postimg.cc/9QdvMmcs/IMG-20251122-112629.jpg" class="main-gallery-image" alt="German">
+        <h3>Project Details</h3>
+        <p>I want to be able to talk German like a real german person. I want to learn german to get the posibility and chance to go in german for vaction, studies and maybe work.</p>
+        <p>I have recently started using an app called Duolingo to learn how to talk German even if the app is not really the best it gives a few basics on how to speak and write in german I am also looking forward to the possibility of learning german in MYP3. I learned a few words and I am preparing to start with a new conversation app to be able to talk to people.</p>
+        <h3>Technologies Used:</h3>
+        <p>Duolingo, Conversation Apps, Language Exchange</p>
+        <h3>Timeline:</h3>
+        <p>1 year | Progress: 25%</p>
+        <h3>Gallery</h3>
+        <div class="gallery">
+          <img src="https://i.postimg.cc/d1HGYM81/Screenshot-2025-12-06-8-56-50-AM.png" alt="Gallery 1">
+          <img src="https://i.postimg.cc/tJFSCCDy/Screenshot-2025-12-06-9-07-55-AM.png" alt="Gallery 2">
+        </div>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal(2)">&times;</span>
+        <h2>Learn how to play chess</h2>
+        <img src="https://i.postimg.cc/3NDMjT1Q/Screenshot-2025-12-06-9-13-59-AM.png" class="main-gallery-image" alt="Chess">
+        <h3>Project Details</h3>
+        <p>I want to be able to play chess like a pro and be able to imagine strategies that will help me get the victory. It will take me 2 months.</p>
+        <p>I am learning about the chess pieces and their movements. I now know how to use them and I have recently started to challenge people to play chess against me to be able to get more skills. I am learning chess tricks and strategies.</p>
+        <h3>Technologies Used:</h3>
+        <p>Chess.com, Online Tutorials, Practice Games, youtube videos</p>
+        <h3>Timeline:</h3>
+        <p>2 months | Progress: 90%</p>
+        <h3>Gallery</h3>
+        <div class="gallery">
+          <img src="https://i.postimg.cc/9FzqyNyW/Screenshot-2025-12-06-8-44-35-AM.png" alt="Gallery 1">
+          <img src="https://i.postimg.cc/FH5s1PZV/Screenshot-2025-12-06-8-46-52-AM.png" alt="Gallery 2">
+          <img src="https://i.postimg.cc/QNKFtWD7/Screenshot-2025-12-06-8-48-47-AM.png" alt="Gallery 3">
+        </div>
+      </div>
+    </div>
+
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    <footer>
+      <p>&copy; 2025 Brionna's Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+      function createFireworks(event) {
+        const colors = ['#FF0000', '#0000FF', '#FFFF00'];
+        const container = document.getElementById('fireworksContainer');
+        const x = event.clientX;
+        const y = event.clientY;
+
+        for (let i = 0; i < 30; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          particle.style.background = color;
+          particle.style.width = '10px';
+          particle.style.height = '10px';
+          particle.style.borderRadius = '50%';
+          particle.style.left = x + 'px';
+          particle.style.top = y + 'px';
+
+          const angle = (Math.PI * 2 * i) / 30;
+          const distance = 100 + Math.random() * 100;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
+
+          particle.style.setProperty('--tx', tx + 'px');
+          particle.style.setProperty('--ty', ty + 'px');
+
+          container.appendChild(particle);
+          setTimeout(() => particle.remove(), 1000);
+        }
+      }
+
+      function openModal(projectIndex) {
+        document.getElementById('modal' + projectIndex).style.display = 'block';
+      }
+
+      function closeModal(projectIndex) {
+        document.getElementById('modal' + projectIndex).style.display = 'none';
+      }
+
+      window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+          event.target.style.display = 'none';
+        }
+      }
+    </script>
+  </body>
+</html>
